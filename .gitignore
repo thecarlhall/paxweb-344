@@ -1,4 +1,9 @@
 *.class
+.project
+.settings
+.classpath
+runner
+target/
 
 # Package Files #
 *.jar
