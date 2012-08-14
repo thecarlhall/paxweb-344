@@ -22,9 +22,8 @@ Building
 Run `mvn install` in the same directory as this file and that will take care of
 the artifacts created to test this.
 
-This work is based on the following patch to Pax Web. Apply this to the master
-branch (3.0.0-SNAPSHOT) and perform a build to get updated artifacts before
-running Pax Runner.
+This work is based on the following patch for Pax Web. This has already been
+applied to the master branch (3.0.0-SNAPSHOT).
 
 ```diff
 --- a/pax-web-spi/src/main/java/org/ops4j/pax/web/service/spi/model/ServerModel.java
