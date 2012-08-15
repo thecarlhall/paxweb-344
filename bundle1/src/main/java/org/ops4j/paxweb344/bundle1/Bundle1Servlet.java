@@ -28,7 +28,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Property;
 import org.apache.felix.scr.annotations.Service;
-import org.ops4j.pax.web.extender.whiteboard.ExtenderConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,7 +36,7 @@ import org.slf4j.LoggerFactory;
  */
 @Component
 @Service
-@Property(name = ExtenderConstants.PROPERTY_ALIAS, value = "/bundle1")
+@Property(name = "alias", value = "/bundle1")
 public class Bundle1Servlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static final Logger LOGGER = LoggerFactory

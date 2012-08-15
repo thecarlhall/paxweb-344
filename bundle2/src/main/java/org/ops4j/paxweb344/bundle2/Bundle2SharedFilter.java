@@ -27,14 +27,9 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import org.apache.felix.scr.annotations.Activate;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Property;
-import org.apache.felix.scr.annotations.Reference;
 import org.apache.felix.scr.annotations.Service;
-import org.ops4j.pax.web.extender.whiteboard.ExtenderConstants;
-import org.ops4j.pax.web.service.WebContainer;
-import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,21 +37,11 @@ import org.slf4j.LoggerFactory;
  *
  */
 @Component(metatype = true)
-//@Service
-//@Property(name = ExtenderConstants.PROPERTY_URL_PATTERNS, value = "/*")
+@Service
+@Property(name = "pattern", value = ".*")
 public class Bundle2SharedFilter implements Filter {
     private static final Logger LOGGER = LoggerFactory
             .getLogger(Bundle2SharedFilter.class);
-
-    @Reference
-    private WebContainer webContainer;
-
-    @Activate
-    protected void activate(BundleContext bndContext) {
-        webContainer.registerFilter(this, new String[] { "/*" }, null, null,
-                webContainer.getDefaultSharedHttpContext());
-        LOGGER.info("Registered Bundle2Filter to default shared http context");
-    }
 
     public void init(FilterConfig filterConfig) throws ServletException {
         LOGGER.info("init({})", filterConfig);
@@ -66,9 +51,9 @@ public class Bundle2SharedFilter implements Filter {
             FilterChain chain) throws IOException, ServletException {
         LOGGER.info("doFilter({}, {}, {})", new Object[] {
                 request, response, chain });
-        response.getWriter().println("Before Bundle2SharedFilter");
+        LOGGER.info("Before Bundle2SharedFilter");
         chain.doFilter(request, response);
-        response.getWriter().println("After Bundle2SharedFilter");
+        LOGGER.info("After Bundle2SharedFilter");
     }
 
     public void destroy() {

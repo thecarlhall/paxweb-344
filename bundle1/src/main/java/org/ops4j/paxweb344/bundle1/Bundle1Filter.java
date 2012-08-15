@@ -30,7 +30,6 @@ import javax.servlet.ServletResponse;
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Property;
 import org.apache.felix.scr.annotations.Service;
-import org.ops4j.pax.web.extender.whiteboard.ExtenderConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -39,7 +38,7 @@ import org.slf4j.LoggerFactory;
  */
 @Component(metatype = true)
 @Service
-@Property(name = ExtenderConstants.PROPERTY_URL_PATTERNS, value = "/*")
+@Property(name = "pattern", value = ".*")
 public class Bundle1Filter implements Filter {
     private static final Logger LOGGER = LoggerFactory
             .getLogger(Bundle1Filter.class);
@@ -52,9 +51,9 @@ public class Bundle1Filter implements Filter {
             FilterChain chain) throws IOException, ServletException {
         LOGGER.info("doFilter({}, {}, {})", new Object[] {
                 request, response, chain });
-        response.getWriter().println("Before Bundle1Filter");
+        LOGGER.info("Before Bundle1Filter");
         chain.doFilter(request, response);
-        response.getWriter().println("After Bundle1Filter");
+        LOGGER.info("After Bundle1Filter");
     }
 
     public void destroy() {

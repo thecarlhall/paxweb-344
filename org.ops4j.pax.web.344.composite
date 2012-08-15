@@ -18,9 +18,9 @@ scan-bundle:mvn:org.sakaiproject.nakamura/org.sakaiproject.nakamura.org.json/1.5
 scan-bundle:mvn:commons-fileupload/commons-fileupload/1.2.2
 scan-bundle:mvn:commons-io/commons-io/1.4
 
-# pax web and whiteboard
-scan-bundle:mvn:org.ops4j.pax.web/pax-web-jetty-bundle/3.0.0-SNAPSHOT
-scan-bundle:mvn:org.ops4j.pax.web/pax-web-extender-whiteboard/3.0.0-SNAPSHOT
+# felix http service and whiteboard
+scan-bundle:mvn:org.apache.felix/org.apache.felix.http.jetty/2.2.0
+scan-bundle:mvn:org.apache.felix/org.apache.felix.http.whiteboard/2.2.0
 
 # test bundles
 scan-bundle:mvn:org.ops4j.pax.web/bundle1/1.0-SNAPSHOT
